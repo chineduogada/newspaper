@@ -560,7 +560,6 @@ const MiniSection = ({ title, children, moreButton, ...rest }) => {
           rounded="sm"
           _hover={{ bg: "purple.800" }}
           w="fit-content"
-          size="xs"
           mt={8}
         >
           More from {title}

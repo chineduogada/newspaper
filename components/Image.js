@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/layout";
 import NextImage from "next/image";
 
 export const Image = ({
-  alt,
+  alt = Math,
   src,
   quality,
   layout = "fill",
@@ -26,7 +26,7 @@ export const Image = ({
     >
       <NextImage
         src={src}
-        alt={alt || src}
+        alt={`${Math.random()}`}
         quality={quality}
         layout={layout}
         objectFit={isProduct ? "contain" : objectFit}
