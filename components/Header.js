@@ -13,6 +13,7 @@ import { Link } from "./Link";
 import { getNews } from "utils/http";
 import { useState } from "react";
 import { Container } from "./Layout";
+import { Loader } from "./Feedback";
 
 const Header = forwardRef(({ breadcrumbPaths, ...rest }, ref) => {
   return (
@@ -218,12 +219,14 @@ const Bottom = ({ brand, ...rest }) => {
 
 const BottomDropdownContent = ({ content, onMouseOver, onMouseLeave }) => {
   const renderCards = () => (
-    <Flex p={3}>
-      <Box boxSize={20} border="1px"></Box>
-      <Box boxSize={20} border="1px"></Box>
-      <Box boxSize={20} border="1px"></Box>
-      <Box boxSize={20} border="1px"></Box>
-    </Flex>
+    <Loader w="100%" h="103.98px" />
+
+    // <Flex p={3}>
+    //  <Box boxSize={20} border="1px"></Box>
+    // <Box boxSize={20} border="1px"></Box>
+    // <Box boxSize={20} border="1px"></Box>
+    // <Box boxSize={20} border="1px"></Box>
+    // </Flex>
   );
 
   return (
