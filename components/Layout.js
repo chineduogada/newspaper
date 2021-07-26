@@ -4,12 +4,7 @@ import Footer from "./Footer";
 import { useInView } from "react-intersection-observer";
 import usePageReady from "hooks/usePageReady";
 
-const Layout = ({
-  children,
-  showHeaderCenter,
-  breadcrumbPaths,
-  footerProps,
-}) => {
+const Layout = ({ children, footerProps }) => {
   const pageReady = usePageReady();
 
   const headerObserver = useInView({
@@ -19,7 +14,7 @@ const Layout = ({
 
   return (
     pageReady && (
-      <Box mx="0 auto" maxW={1440}>
+      <>
         <Header ref={headerObserver.ref} />
 
         <Box as="main">
@@ -27,10 +22,8 @@ const Layout = ({
             <SimpleHeader
               className={"header--inView"}
               w="100%"
-              maxW={1440}
               bg={{ base: "white", md: "auto" }}
               borderBottom={{ base: "1px solid #ddd", md: "none" }}
-              p={{ base: 2, md: 0 }}
               left={{ base: 0, md: "auto" }}
             />
           )}
@@ -39,9 +32,15 @@ const Layout = ({
         </Box>
 
         <Footer {...footerProps} />
-      </Box>
+      </>
     )
   );
 };
+
+export const Container = ({ children, ...rest }) => (
+  <Box mx="auto" maxW={1440} px={{ base: 4, md: 6 }} {...rest}>
+    {children}
+  </Box>
+);
 
 export default Layout;
