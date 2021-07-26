@@ -1,0 +1,14 @@
+.header--inView {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  opacity: 0;
+
+  animation: header 0.5s forwards;
+}
+
+@keyframes header {
+  to {
+    opacity: 1;
+  }
+}
