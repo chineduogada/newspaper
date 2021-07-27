@@ -3,6 +3,7 @@ import Header, { SimpleHeader } from "./Header";
 import Footer from "./Footer";
 import { useInView } from "react-intersection-observer";
 import usePageReady from "hooks/usePageReady";
+import { useState } from "react";
 
 const Layout = ({ children, footerProps }) => {
   const pageReady = usePageReady();
@@ -12,14 +13,24 @@ const Layout = ({ children, footerProps }) => {
     threshold: 0,
   });
 
+  const [mobileDrawerIsOpen, setMobileDrawerIsOpen] = useState(false);
+
   return (
     pageReady && (
-      <>
-        <Header ref={headerObserver.ref} />
+      <Box
+      // className={`layout ${
+      //   mobileDrawerIsOpen ? "layout--shrink" : "layout--scale"
+      // }`}
+      >
+        <Header
+          ref={headerObserver.ref}
+          setMobileDrawerIsOpen={setMobileDrawerIsOpen}
+        />
 
         <Box as="main">
           {!headerObserver.inView && (
             <SimpleHeader
+              setMobileDrawerIsOpen={setMobileDrawerIsOpen}
               className={"header--inView"}
               w="100%"
               bg={{ base: "white", md: "auto" }}
@@ -32,7 +43,7 @@ const Layout = ({ children, footerProps }) => {
         </Box>
 
         <Footer {...footerProps} />
-      </>
+      </Box>
     )
   );
 };

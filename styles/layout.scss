@@ -7,6 +7,19 @@
   animation: header 0.5s forwards;
 }
 
+.layout {
+  transition: 0.2s ease-in;
+
+  &--shrink {
+    transform: scale(0.98) translate(-2.5px, 2.5px);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  &--scale {
+    transform: scale(1);
+  }
+}
+
 @keyframes header {
   to {
     opacity: 1;

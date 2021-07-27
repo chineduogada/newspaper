@@ -1,6 +1,23 @@
-import { Flex, HStack, Box, forwardRef, Text, Icon } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  Box,
+  forwardRef,
+  Text,
+  Icon,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+  Input,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { TiWeatherCloudy } from "react-icons/ti";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown, BiSearch } from "react-icons/bi";
+import { GoThreeBars } from "react-icons/go";
 import {
   RiFacebookFill,
   RiTwitterFill,
@@ -11,27 +28,100 @@ import dateFormat from "dateformat";
 import Brand from "./Brand";
 import { Link } from "./Link";
 import { getNews } from "utils/http";
-import { useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Container } from "./Layout";
 import { Loader } from "./Feedback";
+import { MdClose } from "react-icons/md";
 
-const Header = forwardRef(({ breadcrumbPaths, ...rest }, ref) => {
-  return (
-    <Box mb={5} ref={ref} {...rest}>
-      <Top />
+const Header = forwardRef(
+  ({ setMobileDrawerIsOpen, breadcrumbPaths, ...rest }, ref) => {
+    return (
+      <Box mb={5} ref={ref} {...rest}>
+        <Box d={{ base: "none", md: "block" }}>
+          <Top />
+          <Center />
+          <Bottom />
+        </Box>
 
-      <Center />
+        <MobileHeader setMobileDrawerIsOpen={setMobileDrawerIsOpen} />
+      </Box>
+    );
+  }
+);
 
-      <Bottom />
-    </Box>
-  );
-});
+export const SimpleHeader = ({ setMobileDrawerIsOpen, ...rest }) => {
+  console.log("simple");
 
-export const SimpleHeader = ({ ...rest }) => {
   return (
     <Box {...rest}>
-      <Bottom brand />
+      <Box d={{ base: "none", md: "block" }}>
+        <Bottom brand />
+      </Box>
+
+      <MobileHeader setMobileDrawerIsOpen={setMobileDrawerIsOpen} />
     </Box>
+  );
+};
+
+const MobileHeader = ({ setMobileDrawerIsOpen, ...rest }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef();
+
+  const handleOpen = () => {
+    setMobileDrawerIsOpen(true);
+    setTimeout(onOpen, 150);
+  };
+
+  const handleClose = () => {
+    setMobileDrawerIsOpen(false);
+    onClose();
+  };
+
+  return (
+    <Container
+      d={{ base: "flex", md: "none" }}
+      alignItems="center"
+      justifyContent="space-between"
+      shadow="md"
+      py={2}
+    >
+      <Brand />
+
+      <HStack spacing={5}>
+        <Icon fontSize="1.5rem">
+          <BiSearch />
+        </Icon>
+
+        <Icon fontSize="1.5rem" ref={btnRef} onClick={handleOpen}>
+          <GoThreeBars />
+        </Icon>
+
+        <Drawer
+          isOpen={isOpen}
+          placement="left"
+          size="full"
+          onClose={handleClose}
+          finalFocusRef={btnRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent bg="purple.800" color="white">
+            <DrawerBody pos="relative" px={0} pl={5} pt={"3.5rem"}>
+              <Icon
+                fontSize="1.8rem"
+                onClick={handleClose}
+                pos="absolute"
+                top={5}
+                right={5}
+              >
+                <MdClose />
+              </Icon>
+
+              <Bottom />
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </HStack>
+    </Container>
   );
 };
 
@@ -154,6 +244,9 @@ const Bottom = ({ brand, ...rest }) => {
 
   const [currentContent, setCurrentContent] = useState(null);
 
+  const handleItemClick = (content) => {
+    setCurrentContent((prev) => (prev ? null : content));
+  };
   const handleItemMouseOver = (content) => {
     if (content) {
       setCurrentContent(content);
@@ -165,53 +258,115 @@ const Bottom = ({ brand, ...rest }) => {
     }
   };
 
+  const renderItem = ({ item, drop = item.content, onMouseOver, onClick }) => (
+    <Box w={{ base: "100%", md: "auto" }}>
+      <Flex
+        as="li"
+        key={item.text}
+        alignItems="center"
+        textTransform="uppercase"
+        fontWeight={700}
+        fontSize="sm"
+        onMouseOver={drop ? onMouseOver : () => {}}
+        onClick={drop ? onClick : () => {}}
+        w={{ base: "100%", md: "auto" }}
+      >
+        {drop ? (
+          <Text py={3} px={{ base: 4, md: 3 }}>
+            {item.text}
+          </Text>
+        ) : (
+          <Link
+            href={item.href}
+            mute
+            _hover={{ opacity: 0.6 }}
+            display="block"
+            width="100%"
+            py={3}
+            px={{ base: 4, md: 3 }}
+          >
+            {item.text}
+          </Link>
+        )}
+
+        {drop && (
+          <Icon fontSize="1.5rem">
+            <BiChevronDown />
+          </Icon>
+        )}
+      </Flex>
+
+      {console.log(item.content, currentContent)}
+
+      {drop && currentContent && (
+        <Flex flexDir="column" d={{ base: "flex", md: "none" }} pl={5}>
+          {currentContent.list?.map((item) => (
+            <Link
+              href={item.href}
+              d="block"
+              p={3}
+              w="100%"
+              mute
+              _hover={{ opacity: 0.6 }}
+            >
+              {item.text}
+            </Link>
+          ))}
+        </Flex>
+      )}
+    </Box>
+  );
+
   return (
-    <Box py={{ md: 2, lg: 3 }} shadow="lg" {...rest}>
-      <Container>
+    <Box py={{ md: 2, lg: 3 }} shadow={{ md: "lg" }} {...rest}>
+      <Container px={{ base: 0 }}>
         <Flex
           flexDir={{ md: "column", lg: "row" }}
-          alignItems={{ md: "flex-start", lg: "center" }}
+          alignItems={{ base: "stretch", md: "flex-start", lg: "center" }}
         >
           {brand && <Brand mr={5} mb={{ md: 3, lg: 0 }} />}
 
-          <nav>
+          <Box as="nav" w="100%">
             <Flex
+              flexDir={{ base: "column", md: "row" }}
               as="ul"
               justifyContent={brand ? "flex-start" : "center"}
               listStyleType="none"
+              w={{ base: "100%", md: "auto" }}
             >
               {data.map((item) => (
-                <Flex
-                  as="li"
-                  key={item.text}
-                  alignItems="center"
-                  textTransform="uppercase"
-                  fontWeight={700}
-                  fontSize="sm"
-                  onMouseOver={handleItemMouseOver.bind(null, item.content)}
-                >
-                  <Link href={item.href} d="block" p={3}>
-                    {item.text}
-                  </Link>
-
-                  {item.content && (
-                    <Icon fontSize="1.5rem">
-                      <BiChevronDown />
-                    </Icon>
-                  )}
-                </Flex>
+                <Fragment key={item.text}>
+                  <Box
+                    d={{ base: "block", md: "none" }}
+                    flex={{ base: 1, md: 0 }}
+                  >
+                    {renderItem({
+                      item,
+                      drop: item.content && !item.content.handleFetchResource,
+                      onClick: handleItemClick.bind(null, item.content),
+                    })}
+                  </Box>
+                  <Box d={{ base: "none", md: "block" }}>
+                    {renderItem({
+                      item,
+                      onMouseOver: handleItemMouseOver.bind(null, item.content),
+                    })}
+                  </Box>
+                </Fragment>
               ))}
             </Flex>
-          </nav>
+          </Box>
         </Flex>
 
-        {currentContent && (
-          <BottomDropdownContent
-            content={currentContent}
-            onMouseOver={handleItemMouseOver}
-            onMouseLeave={handleItemMouseLeave}
-          />
-        )}
+        <Box d={{ base: "none", md: "block" }}>
+          {currentContent && (
+            <BottomDropdownContent
+              content={currentContent}
+              onMouseOver={handleItemMouseOver}
+              onMouseLeave={handleItemMouseLeave}
+            />
+          )}
+        </Box>
       </Container>
     </Box>
   );
