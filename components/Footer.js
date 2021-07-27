@@ -34,34 +34,44 @@ const Footer = () => {
       />
 
       <Box color="white" pos="relative" zIndex={1}>
-        <Grid templateColumns="1.7fr .8fr .8fr 1.2fr" pt={16} px={5}>
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+            lg: "1.7fr .8fr .8fr 1.2fr",
+          }}
+          rowGap={10}
+          pt={16}
+          px={5}
+          pb={3}
+        >
           <GridItem>
             <Box w="200px">
               <Brand size="3xl" />
 
-              <Text fontSize="xs" my={4}>
+              <Text fontSize={{ base: "md", md: "sm", lg: "xs" }} my={4}>
                 © Munich, LLC. All rights reserved. Pulses Pro® is a registered
                 U.S. trademark of tagDiv, LLC.
               </Text>
 
               <HStack spacing="2">
                 <Link>
-                  <Icon fontSize="1.5rem">
+                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
                     <TiSocialFacebook />
                   </Icon>
                 </Link>
                 <Link>
-                  <Icon fontSize="1.5rem">
+                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
                     <TiSocialTwitter />
                   </Icon>
                 </Link>
                 <Link>
-                  <Icon fontSize="1.5rem">
+                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
                     <TiSocialInstagram />
                   </Icon>
                 </Link>
                 <Link>
-                  <Icon fontSize="1.5rem">
+                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
                     <TiSocialYoutube />
                   </Icon>
                 </Link>
@@ -70,14 +80,19 @@ const Footer = () => {
           </GridItem>
 
           <GridItem>
-            <Heading as="h6" fontSize="lg" color="yellow.500" mb={5}>
+            <Heading
+              as="h6"
+              fontSize={{ base: "xl", md: "lg" }}
+              color="yellow.500"
+              mb={5}
+            >
               About Us
             </Heading>
 
             <Stack spacing={1}>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -86,7 +101,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -95,7 +110,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -104,7 +119,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -113,7 +128,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -122,7 +137,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -133,14 +148,19 @@ const Footer = () => {
           </GridItem>
 
           <GridItem>
-            <Heading as="h6" fontSize="lg" color="yellow.500" mb={5}>
+            <Heading
+              as="h6"
+              fontSize={{ base: "xl", md: "lg" }}
+              color="yellow.500"
+              mb={5}
+            >
               Popular Category
             </Heading>
 
             <Stack spacing={1}>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -149,7 +169,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -158,7 +178,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -167,7 +187,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -176,7 +196,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -185,7 +205,7 @@ const Footer = () => {
               </Link>
               <Link
                 mute
-                fontSize="xx-small"
+                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
                 textTransform="uppercase"
                 letterSpacing={1}
                 _hover={{ color: "yellow.500" }}
@@ -196,7 +216,12 @@ const Footer = () => {
           </GridItem>
 
           <GridItem>
-            <Heading as="h6" fontSize="lg" color="yellow.500" mb={5}>
+            <Heading
+              as="h6"
+              fontSize={{ base: "xl", md: "lg" }}
+              color="yellow.500"
+              mb={5}
+            >
               Editor Picks
             </Heading>
 
@@ -229,7 +254,7 @@ const Footer = () => {
 const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
   <Flex {...rest}>
     <Box mr={5}>
-      <TitleText size="sm" text={title} mb={1} />
+      <TitleText size={{ base: "md", md: "sm" }} text={title} mb={1} />
 
       <DateText />
     </Box>
@@ -263,7 +288,12 @@ const TitleText = ({ text, size = "2xl", ...rest }) => (
   </Heading>
 );
 
-const DateText = ({ date = Date.now(), text, size = "xs", ...rest }) => (
+const DateText = ({
+  date = Date.now(),
+  text,
+  size = { base: "sm", md: "xs" },
+  ...rest
+}) => (
   <Text fontStyle="italic" fontSize={size} {...rest}>
     {text}
     {text && " - "}

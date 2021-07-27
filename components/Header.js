@@ -36,7 +36,7 @@ import { MdClose } from "react-icons/md";
 const Header = forwardRef(
   ({ setMobileDrawerIsOpen, breadcrumbPaths, ...rest }, ref) => {
     return (
-      <Box mb={5} ref={ref} {...rest}>
+      <Box as="header" mb={5} ref={ref} {...rest}>
         <Box d={{ base: "none", md: "block" }}>
           <Top />
           <Center />
@@ -50,10 +50,8 @@ const Header = forwardRef(
 );
 
 export const SimpleHeader = ({ setMobileDrawerIsOpen, ...rest }) => {
-  console.log("simple");
-
   return (
-    <Box {...rest}>
+    <Box as="header" {...rest}>
       <Box d={{ base: "none", md: "block" }}>
         <Bottom brand />
       </Box>
@@ -84,6 +82,7 @@ const MobileHeader = ({ setMobileDrawerIsOpen, ...rest }) => {
       justifyContent="space-between"
       shadow="md"
       py={2}
+      {...rest}
     >
       <Brand />
 
@@ -116,7 +115,7 @@ const MobileHeader = ({ setMobileDrawerIsOpen, ...rest }) => {
                 <MdClose />
               </Icon>
 
-              <Bottom />
+              <Bottom onClose={onClose} />
             </DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -195,7 +194,7 @@ const Center = () => (
   </Box>
 );
 
-const Bottom = ({ brand, ...rest }) => {
+const Bottom = ({ brand, onClose, ...rest }) => {
   const data = [
     { text: "Home", href: "#" },
     {
@@ -272,7 +271,7 @@ const Bottom = ({ brand, ...rest }) => {
         w={{ base: "100%", md: "auto" }}
       >
         {drop ? (
-          <Text py={3} px={{ base: 4, md: 3 }}>
+          <Text py={{ base: 3, md: 2, lg: 3 }} px={{ base: 4, md: 2, lg: 3 }}>
             {item.text}
           </Text>
         ) : (
@@ -280,10 +279,12 @@ const Bottom = ({ brand, ...rest }) => {
             href={item.href}
             mute
             _hover={{ opacity: 0.6 }}
+            _focus={{ outline: "none" }}
             display="block"
             width="100%"
-            py={3}
-            px={{ base: 4, md: 3 }}
+            py={{ base: 3, md: 2, lg: 3 }}
+            px={{ base: 4, md: 2, lg: 3 }}
+            onClick={onClose}
           >
             {item.text}
           </Link>
@@ -296,18 +297,19 @@ const Bottom = ({ brand, ...rest }) => {
         )}
       </Flex>
 
-      {console.log(item.content, currentContent)}
-
       {drop && currentContent && (
         <Flex flexDir="column" d={{ base: "flex", md: "none" }} pl={5}>
           {currentContent.list?.map((item) => (
             <Link
+              key={item.text}
               href={item.href}
               d="block"
               p={3}
               w="100%"
               mute
               _hover={{ opacity: 0.6 }}
+              _focus={{ outline: "none" }}
+              onClick={onClose}
             >
               {item.text}
             </Link>
@@ -319,12 +321,12 @@ const Bottom = ({ brand, ...rest }) => {
 
   return (
     <Box py={{ md: 2, lg: 3 }} shadow={{ md: "lg" }} {...rest}>
-      <Container px={{ base: 0 }}>
+      <Container px={{ base: 0, md: 6 }}>
         <Flex
           flexDir={{ md: "column", lg: "row" }}
           alignItems={{ base: "stretch", md: "flex-start", lg: "center" }}
         >
-          {brand && <Brand mr={5} mb={{ md: 3, lg: 0 }} />}
+          {brand && <Brand mr={5} mb={{ md: 3, lg: 0 }} w="140px" />}
 
           <Box as="nav" w="100%">
             <Flex

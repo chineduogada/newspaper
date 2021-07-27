@@ -49,7 +49,7 @@ const Layout = ({ children, footerProps }) => {
 };
 
 export const Container = ({ children, ...rest }) => (
-  <Box mx="auto" maxW={1440} px={{ base: 4, md: 6 }} {...rest}>
+  <Box mx="auto" maxW={1440} px={{ base: 2, sm: 4, md: 2, lg: 6 }} {...rest}>
     {children}
   </Box>
 );

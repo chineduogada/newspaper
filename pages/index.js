@@ -23,8 +23,13 @@ const HomePage = () => {
     <Layout>
       {/* First Section */}
       <Container as="section">
-        <Grid templateColumns="1fr 1fr 1fr 1fr" columnGap={5} mb={10}>
-          <GridItem colSpan={2}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1fr 1fr 1fr" }}
+          columnGap={{ md: 2, lg: 5 }}
+          rowGap={10}
+          mb={10}
+        >
+          <GridItem colSpan={{ base: 1, md: 2 }}>
             <LG_StackCard badge="news" />
           </GridItem>
 
@@ -64,44 +69,68 @@ const HomePage = () => {
           </GridItem>
         </Grid>
 
-        <HStack spacing={1} alignItems="stretch" mb={10}>
-          <Box bg="gray.100" p={5}>
-            <Heading fontSize="md" color="purple.800" mb={5}>
+        <Flex
+          flexDir={{ base: "column", md: "row" }}
+          alignItems="stretch"
+          mb={10}
+        >
+          <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
+            <Heading
+              fontSize={{ base: "xl", md: "lg", lg: "md" }}
+              color="purple.800"
+              mb={{ base: 5, md: 10, lg: 5 }}
+            >
               New Podcast
             </Heading>
 
-            <Flex>
-              <Box>
+            <Flex justifyContent="space-between">
+              <Box mr={2}>
                 <TitleText
-                  fontSize="sm"
+                  fontSize={{ base: "md", md: "sm" }}
                   text="Mark Steinberg Reads Donald Trump’s Mean Tweets on Kimmel"
                 />
 
                 <DateText my={1} />
               </Box>
 
-              <Image rounded="full" boxSize="60px" src="/img/shoes.jpg" />
+              <Image
+                rounded="full"
+                boxSize="60px"
+                src="/img/shoes.jpg"
+                d={{ md: "none", lg: "block" }}
+              />
             </Flex>
           </Box>
 
-          <Box bg="gray.100" p={5}>
-            <Heading fontSize="md" color="purple.800" mb={5}>
+          <Box
+            bg="gray.100"
+            p={{ base: 2, lg: 5 }}
+            my={{ base: 5, md: 0 }}
+            mx={{ base: 0, md: 1, lg: 5 }}
+            flex={1}
+          >
+            <Heading
+              fontSize={{ base: "xl", md: "lg", lg: "md" }}
+              color="purple.800"
+              mb={5}
+            >
               Subscribe to our newsletter
             </Heading>
 
             <MoreText
               text="To be updated with all the latest news, offers and special announcements."
               fontStyle="italic"
-              size="xs"
+              size={{ base: "md", md: "xs" }}
               mb={4}
             />
 
-            <Flex as="form">
+            <Flex flexDir={{ base: "column", lg: "row" }} as="form">
               <Input
                 rounded="none"
                 placeholder="Your email address"
-                size="xs"
+                size={{ base: "md", md: "sm", lg: "xs" }}
                 h="40px"
+                px={5}
                 bg="white"
                 color="black"
               />
@@ -110,8 +139,10 @@ const HomePage = () => {
                   bg="purple.800"
                   color="white"
                   rounded="none"
-                  size="xs"
+                  size={{ base: "md", md: "sm", lg: "xs" }}
+                  w={{ base: "100%", lg: "auto" }}
                   h="40px"
+                  px={5}
                   _hover={{ opacity: 0.8 }}
                 >
                   SUBSCRIBE
@@ -120,68 +151,89 @@ const HomePage = () => {
             </Flex>
           </Box>
 
-          <Box bg="gray.100" p={5}>
-            <Heading fontSize="md" color="purple.800" mb={5}>
+          <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
+            <Heading
+              fontSize={{ base: "xl", md: "lg", lg: "md" }}
+              color="purple.800"
+              mb={{ base: 5, md: 10, lg: 5 }}
+            >
               Stay Connected
             </Heading>
 
-            <HStack spacing={1} color="white">
-              <Link mute>
+            <HStack spacing={{ base: 1, lg: 5 }} color="white">
+              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
                 <Box
+                  w={{ base: "100%", md: "84px", lg: "100%" }}
                   transition=".15s"
                   _hover={{ bg: "black" }}
                   textAlign="center"
                   bg="facebook.300"
                   p={2}
-                  w="84px"
                 >
                   <Icon fontSize="1.5rem">
                     <TiSocialFacebook />
                   </Icon>
 
                   <Text fontWeight="bold">16,000</Text>
-                  <Text fontSize="xs">Fans</Text>
+                  <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>
+                    Fans
+                  </Text>
                 </Box>
               </Link>
-              <Link mute>
+              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
                 <Box
+                  w={{ base: "100%", md: "84px", lg: "100%" }}
                   transition=".15s"
                   _hover={{ bg: "black" }}
                   textAlign="center"
                   bg="twitter.400"
                   p={2}
-                  w="84px"
                 >
                   <Icon fontSize="1.5rem">
                     <TiSocialTwitter />
                   </Icon>
 
                   <Text fontWeight="bold">16,000</Text>
-                  <Text fontSize="xs">Followers</Text>
+                  <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>
+                    Followers
+                  </Text>
                 </Box>
               </Link>
-              <Link mute>
+              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
                 <Box
+                  w={{ base: "100%", md: "84px", lg: "100%" }}
                   transition=".15s"
                   _hover={{ bg: "black" }}
                   textAlign="center"
                   bg="red.500"
                   p={2}
-                  w="84px"
                 >
                   <Icon fontSize="1.5rem">
                     <TiMediaPlay />
                   </Icon>
 
                   <Text fontWeight="bold">16,000</Text>
-                  <Text fontSize="xs">Subscribers</Text>
+                  <Text
+                    fontSize={{ base: "md", md: "sm" }}
+                    d={{ base: "block", lg: "none" }}
+                  >
+                    Subs
+                  </Text>
+                  <Text fontSize="xs" d={{ base: "none", lg: "block" }}>
+                    Subscribers
+                  </Text>
                 </Box>
               </Link>
             </HStack>
           </Box>
-        </HStack>
+        </Flex>
 
-        <Grid templateColumns="1fr 1.9fr 1.1fr" mb={10}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1.9fr 1fr" }}
+          columnGap={{ md: 2, lg: 5 }}
+          rowGap={10}
+          mb={10}
+        >
           <GridItem
             as="aside"
             h="fit-content"
@@ -190,9 +242,9 @@ const HomePage = () => {
           >
             <MiniSection
               title="Magazine"
-              p={5}
+              p={{ md: 5 }}
               border="1px"
-              borderColor="gray.300"
+              borderColor={{ base: "transparent", md: "gray.300" }}
               moreButton
             >
               <SM_ListCard
@@ -227,7 +279,7 @@ const HomePage = () => {
           </GridItem>
 
           <GridItem>
-            <MiniSection title="Politics" p={5}>
+            <MiniSection title="Politics" p={{ md: 5 }}>
               <MD_ListCard
                 badge="arts"
                 title="The Smoke Signal by Frederic Remington, long distance communication"
@@ -258,10 +310,10 @@ const HomePage = () => {
           <GridItem as="aside">
             <MiniSection
               title="Sport"
-              p={5}
-              mb={5}
+              p={{ md: 5 }}
+              mb={{ base: 10, md: 5 }}
               border="1px"
-              borderColor="gray.300"
+              borderColor={{ base: "transparent", md: "gray.300" }}
               moreButton
             >
               <SM_ListCard
@@ -295,7 +347,12 @@ const HomePage = () => {
           </GridItem>
         </Grid>
 
-        <Grid templateColumns="1fr 1.9fr 1.1fr" mb={10}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1.9fr 1.1fr" }}
+          columnGap={{ md: 2, lg: 5 }}
+          rowGap={10}
+          mb={10}
+        >
           <GridItem
             as="aside"
             h="fit-content"
@@ -304,23 +361,23 @@ const HomePage = () => {
           >
             <MiniSection
               title="Arts"
-              p={5}
+              p={{ md: 5 }}
               border="1px"
-              borderColor="gray.300"
+              borderColor={{ base: "transparent", md: "gray.300" }}
               moreButton
             >
               <MD_StackCard
-                imageProps={{ h: "60px" }}
+                imageProps={{ h: { base: "144px", md: "60px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
               <MD_StackCard
-                imageProps={{ h: "60px" }}
+                imageProps={{ h: { base: "144px", md: "60px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
               <MD_StackCard
-                imageProps={{ h: "60px" }}
+                imageProps={{ h: { base: "144px", md: "60px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
@@ -328,7 +385,7 @@ const HomePage = () => {
           </GridItem>
 
           <GridItem>
-            <MiniSection title="Style" p={5}>
+            <MiniSection title="Style" p={{ md: 5 }}>
               <LG_StackCard badge="style" imageBadge revereHeader />
 
               <MD_ListCard
@@ -351,10 +408,10 @@ const HomePage = () => {
           <GridItem as="aside">
             <MiniSection
               title="Travel"
-              p={5}
-              mb={5}
+              p={{ md: 5 }}
+              mb={{ base: 10, md: 5 }}
               border="1px"
-              borderColor="gray.300"
+              borderColor={{ base: "transparent", md: "gray.300" }}
               moreButton
             >
               <SM_ListCard
@@ -367,7 +424,7 @@ const HomePage = () => {
               />
             </MiniSection>
 
-            <AdCard mb={5} />
+            <AdCard mb={{ base: 10, md: 5 }} />
 
             <MiniSection
               title="Culture"
@@ -410,12 +467,18 @@ const LG_StackCard = ({ badge, imageBadge, revereHeader }) => {
   );
 
   return (
-    <Box pb={5}>
+    <Box pb={5} mb={{ base: 5, md: 0 }}>
       {!revereHeader && renderHeader()}
 
       <CardImage
         w="100%"
-        h={{ md: "400px", xl: "500px" }}
+        h={{
+          base: "230px",
+          sm: "300px",
+          md: "260px",
+          lg: "400px",
+          xl: "500px",
+        }}
         src="/img/news.jpg"
         badge={imageBadge && badge}
         wrapperProps={{ mb: 3 }}
@@ -429,28 +492,38 @@ const LG_StackCard = ({ badge, imageBadge, revereHeader }) => {
 };
 
 const MD_StackCard = ({ badge, title, imageProps }) => (
-  <Box>
+  <Box mb={{ base: 5, md: 0 }}>
     <CardImage
       w="100%"
-      h="100px"
+      h={{ base: "144px", sm: "150px", md: "73px", lg: "100px" }}
       src="/img/news.jpg"
       badge={badge}
       {...imageProps}
     />
 
-    <TitleText size="sm" text={title} my={2} />
+    <TitleText size={{ base: "lg", md: "sm" }} text={title} my={2} />
 
     <DateText />
   </Box>
 );
 
 const MD_ListCard = ({ badge, title }) => (
-  <Flex>
+  <Flex mb={{ base: 5, md: 0 }}>
     <Box>
-      <CardImage w="150px" h="100px" src="/img/news.jpg" badge={badge} />
+      <CardImage
+        w={{ base: "100px", md: "150px" }}
+        h={{ base: "70px", md: "100px" }}
+        src="/img/news.jpg"
+        badge={badge}
+      />
     </Box>
 
-    <Box borderTop="1px" borderColor="gray.300" p={2} ml={3}>
+    <Box
+      borderTop="1px"
+      borderColor="gray.300"
+      p={{ base: 1, md: 2 }}
+      ml={{ base: 2, md: 3 }}
+    >
       <TitleText size="sm" text={title} />
 
       <DateText />
@@ -460,8 +533,8 @@ const MD_ListCard = ({ badge, title }) => (
 
 const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
   <Flex {...rest}>
-    <Box mr={5}>
-      <TitleText size="sm" text={title} mb={1} />
+    <Box mr={{ base: 2, md: 5 }}>
+      <TitleText size={{ base: "lg", md: "sm" }} text={title} mb={1} />
 
       <DateText />
     </Box>
@@ -471,7 +544,7 @@ const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
         wrapperProps={{
           flexShrink: 0,
         }}
-        boxSize={50}
+        boxSize={{ base: "64px", md: 35, lg: 50 }}
         src="/img/news.jpg"
         rounded={imageIsRound}
       />
@@ -481,11 +554,19 @@ const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
 
 const AdCard = ({ ...rest }) => (
   <Flex flexDir="column" alignItems="center" {...rest}>
-    <Text textAlign="center" opacity=".7" fontSize="xs" mb={1}>
+    <Text
+      textAlign="center"
+      opacity=".7"
+      fontSize={{ base: "sm", md: "xs" }}
+      mb={1}
+    >
       - Advertisement -
     </Text>
 
-    <CardImage boxSize={200} src="/img/shoes.jpg" />
+    <CardImage
+      boxSize={{ base: 280, sm: 300, md: 166, lg: 200 }}
+      src="/img/shoes.jpg"
+    />
   </Flex>
 );
 
@@ -525,7 +606,12 @@ const TitleText = ({ text, size = "2xl", ...rest }) => (
   </Heading>
 );
 
-const DateText = ({ date = Date.now(), text, size = "xs", ...rest }) => (
+const DateText = ({
+  date = Date.now(),
+  text,
+  size = { base: "sm", md: "xs" },
+  ...rest
+}) => (
   <Text fontStyle="italic" fontSize={size} {...rest}>
     {text}
     {text && " - "}
@@ -544,7 +630,7 @@ const MiniSection = ({ title, children, moreButton, ...rest }) => {
     <Box {...rest}>
       <Stack spacing={4}>
         {title && (
-          <Heading fontSize="lg" color="purple.800">
+          <Heading fontSize={{ base: "xl", md: "lg" }} color="purple.800">
             {title}
           </Heading>
         )}
