@@ -22,6 +22,7 @@ const HomePage = () => {
   return (
     <Layout>
       {/* First Section */}
+
       <Container as="section">
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1fr 1fr 1fr" }}
@@ -68,166 +69,169 @@ const HomePage = () => {
             </Stack>
           </GridItem>
         </Grid>
+      </Container>
 
-        <Flex
-          flexDir={{ base: "column", md: "row" }}
-          alignItems="stretch"
-          mb={10}
-        >
-          <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
-            <Heading
-              fontSize={{ base: "xl", md: "lg", lg: "md" }}
-              color="purple.800"
-              mb={{ base: 5, md: 10, lg: 5 }}
-            >
-              New Podcast
-            </Heading>
-
-            <Flex justifyContent="space-between">
-              <Box mr={2}>
-                <TitleText
-                  fontSize={{ base: "md", md: "sm" }}
-                  text="Mark Steinberg Reads Donald Trump’s Mean Tweets on Kimmel"
-                />
-
-                <DateText my={1} />
-              </Box>
-
-              <Image
-                rounded="full"
-                boxSize="60px"
-                src="/img/shoes.jpg"
-                d={{ md: "none", lg: "block" }}
-              />
-            </Flex>
-          </Box>
-
-          <Box
-            bg="gray.100"
-            p={{ base: 2, lg: 5 }}
-            my={{ base: 5, md: 0 }}
-            mx={{ base: 0, md: 1, lg: 5 }}
-            flex={1}
+      <Container
+        as="section"
+        wider
+        d="flex"
+        flexDir={{ base: "column", md: "row" }}
+        alignItems="stretch"
+        mb={10}
+      >
+        <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
+          <Heading
+            fontSize={{ base: "xl", md: "lg", lg: "md" }}
+            color="purple.800"
+            mb={{ base: 5, md: 10, lg: 5 }}
           >
-            <Heading
-              fontSize={{ base: "xl", md: "lg", lg: "md" }}
-              color="purple.800"
-              mb={5}
-            >
-              Subscribe to our newsletter
-            </Heading>
+            New Podcast
+          </Heading>
 
-            <MoreText
-              text="To be updated with all the latest news, offers and special announcements."
-              fontStyle="italic"
-              size={{ base: "md", md: "xs" }}
-              mb={4}
+          <Flex justifyContent="space-between">
+            <Box mr={2}>
+              <TitleText
+                fontSize={{ base: "md", md: "sm" }}
+                text="Mark Steinberg Reads Donald Trump’s Mean Tweets on Kimmel"
+              />
+
+              <DateText my={1} />
+            </Box>
+
+            <Image
+              rounded="full"
+              boxSize="60px"
+              src="/img/shoes.jpg"
+              d={{ md: "none", lg: "block" }}
             />
+          </Flex>
+        </Box>
 
-            <Flex flexDir={{ base: "column", lg: "row" }} as="form">
-              <Input
+        <Box
+          bg="gray.100"
+          p={{ base: 2, lg: 5 }}
+          my={{ base: 5, md: 0 }}
+          mx={{ base: 0, md: 1, lg: 5 }}
+          flex={1}
+        >
+          <Heading
+            fontSize={{ base: "xl", md: "lg", lg: "md" }}
+            color="purple.800"
+            mb={5}
+          >
+            Subscribe to our newsletter
+          </Heading>
+
+          <MoreText
+            text="To be updated with all the latest news, offers and special announcements."
+            fontStyle="italic"
+            size={{ base: "md", md: "xs" }}
+            mb={4}
+          />
+
+          <Flex flexDir={{ base: "column", lg: "row" }} as="form">
+            <Input
+              rounded="none"
+              placeholder="Your email address"
+              size={{ base: "md", md: "sm", lg: "xs" }}
+              h="40px"
+              px={5}
+              bg="white"
+              color="black"
+            />
+            <Box h="40px">
+              <Button
+                bg="purple.800"
+                color="white"
                 rounded="none"
-                placeholder="Your email address"
                 size={{ base: "md", md: "sm", lg: "xs" }}
+                w={{ base: "100%", lg: "auto" }}
                 h="40px"
                 px={5}
-                bg="white"
-                color="black"
-              />
-              <Box h="40px">
-                <Button
-                  bg="purple.800"
-                  color="white"
-                  rounded="none"
-                  size={{ base: "md", md: "sm", lg: "xs" }}
-                  w={{ base: "100%", lg: "auto" }}
-                  h="40px"
-                  px={5}
-                  _hover={{ opacity: 0.8 }}
-                >
-                  SUBSCRIBE
-                </Button>
+                _hover={{ opacity: 0.8 }}
+              >
+                SUBSCRIBE
+              </Button>
+            </Box>
+          </Flex>
+        </Box>
+
+        <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
+          <Heading
+            fontSize={{ base: "xl", md: "lg", lg: "md" }}
+            color="purple.800"
+            mb={{ base: 5, md: 10, lg: 5 }}
+          >
+            Stay Connected
+          </Heading>
+
+          <HStack spacing={{ base: 1, lg: 5 }} color="white">
+            <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
+              <Box
+                w={{ base: "100%", md: "84px", lg: "100%" }}
+                transition=".15s"
+                _hover={{ bg: "black" }}
+                textAlign="center"
+                bg="facebook.300"
+                p={2}
+              >
+                <Icon fontSize="1.5rem">
+                  <TiSocialFacebook />
+                </Icon>
+
+                <Text fontWeight="bold">16,000</Text>
+                <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>Fans</Text>
               </Box>
-            </Flex>
-          </Box>
+            </Link>
+            <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
+              <Box
+                w={{ base: "100%", md: "84px", lg: "100%" }}
+                transition=".15s"
+                _hover={{ bg: "black" }}
+                textAlign="center"
+                bg="twitter.400"
+                p={2}
+              >
+                <Icon fontSize="1.5rem">
+                  <TiSocialTwitter />
+                </Icon>
 
-          <Box bg="gray.100" p={{ base: 2, lg: 5 }} flex={1}>
-            <Heading
-              fontSize={{ base: "xl", md: "lg", lg: "md" }}
-              color="purple.800"
-              mb={{ base: 5, md: 10, lg: 5 }}
-            >
-              Stay Connected
-            </Heading>
+                <Text fontWeight="bold">16,000</Text>
+                <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>
+                  Followers
+                </Text>
+              </Box>
+            </Link>
+            <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
+              <Box
+                w={{ base: "100%", md: "84px", lg: "100%" }}
+                transition=".15s"
+                _hover={{ bg: "black" }}
+                textAlign="center"
+                bg="red.500"
+                p={2}
+              >
+                <Icon fontSize="1.5rem">
+                  <TiMediaPlay />
+                </Icon>
 
-            <HStack spacing={{ base: 1, lg: 5 }} color="white">
-              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
-                <Box
-                  w={{ base: "100%", md: "84px", lg: "100%" }}
-                  transition=".15s"
-                  _hover={{ bg: "black" }}
-                  textAlign="center"
-                  bg="facebook.300"
-                  p={2}
+                <Text fontWeight="bold">16,000</Text>
+                <Text
+                  fontSize={{ base: "md", md: "sm" }}
+                  d={{ base: "block", lg: "none" }}
                 >
-                  <Icon fontSize="1.5rem">
-                    <TiSocialFacebook />
-                  </Icon>
+                  Subs
+                </Text>
+                <Text fontSize="xs" d={{ base: "none", lg: "block" }}>
+                  Subscribers
+                </Text>
+              </Box>
+            </Link>
+          </HStack>
+        </Box>
+      </Container>
 
-                  <Text fontWeight="bold">16,000</Text>
-                  <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>
-                    Fans
-                  </Text>
-                </Box>
-              </Link>
-              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
-                <Box
-                  w={{ base: "100%", md: "84px", lg: "100%" }}
-                  transition=".15s"
-                  _hover={{ bg: "black" }}
-                  textAlign="center"
-                  bg="twitter.400"
-                  p={2}
-                >
-                  <Icon fontSize="1.5rem">
-                    <TiSocialTwitter />
-                  </Icon>
-
-                  <Text fontWeight="bold">16,000</Text>
-                  <Text fontSize={{ base: "md", md: "sm", lg: "xs" }}>
-                    Followers
-                  </Text>
-                </Box>
-              </Link>
-              <Link mute flex={{ base: 1, md: 0, lg: 1 }}>
-                <Box
-                  w={{ base: "100%", md: "84px", lg: "100%" }}
-                  transition=".15s"
-                  _hover={{ bg: "black" }}
-                  textAlign="center"
-                  bg="red.500"
-                  p={2}
-                >
-                  <Icon fontSize="1.5rem">
-                    <TiMediaPlay />
-                  </Icon>
-
-                  <Text fontWeight="bold">16,000</Text>
-                  <Text
-                    fontSize={{ base: "md", md: "sm" }}
-                    d={{ base: "block", lg: "none" }}
-                  >
-                    Subs
-                  </Text>
-                  <Text fontSize="xs" d={{ base: "none", lg: "block" }}>
-                    Subscribers
-                  </Text>
-                </Box>
-              </Link>
-            </HStack>
-          </Box>
-        </Flex>
-
+      <Container as="section">
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1.9fr 1fr" }}
           columnGap={{ md: 2, lg: 5 }}
@@ -244,35 +248,35 @@ const HomePage = () => {
               title="Magazine"
               p={{ md: 5 }}
               border="1px"
-              borderColor={{ base: "transparent", md: "gray.300" }}
+              borderColor={{ base: "transparent", md: "gray.100" }}
               moreButton
             >
               <SM_ListCard
                 title="Jen Kendall Kicked off American Airlines First Flight"
                 noImage
                 borderBottom="1px"
-                borderColor="gray.300"
+                borderColor="gray.100"
                 pb={2}
               />
               <SM_ListCard
                 title="Jen Kendall Kicked off American Airlines First Flight"
                 noImage
                 borderBottom="1px"
-                borderColor="gray.300"
+                borderColor="gray.100"
                 pb={2}
               />
               <SM_ListCard
                 title="Jen Kendall Kicked off American Airlines First Flight"
                 noImage
                 borderBottom="1px"
-                borderColor="gray.300"
+                borderColor="gray.100"
                 pb={2}
               />
               <SM_ListCard
                 title="Jen Kendall Kicked off American Airlines First Flight"
                 noImage
                 borderBottom="1px"
-                borderColor="gray.300"
+                borderColor="gray.100"
                 pb={2}
               />
             </MiniSection>
@@ -313,7 +317,7 @@ const HomePage = () => {
               p={{ md: 5 }}
               mb={{ base: 10, md: 5 }}
               border="1px"
-              borderColor={{ base: "transparent", md: "gray.300" }}
+              borderColor={{ base: "transparent", md: "gray.100" }}
               moreButton
             >
               <SM_ListCard
@@ -330,7 +334,7 @@ const HomePage = () => {
               />
             </MiniSection>
 
-            <Box border="1px" borderColor="gray.300">
+            <Box border="1px" borderColor="gray.100">
               <AdCard />
 
               <MiniSection title="Culture" p={5}>
@@ -346,7 +350,104 @@ const HomePage = () => {
             </Box>
           </GridItem>
         </Grid>
+      </Container>
 
+      <Container as="section" wider pos="relative">
+        <Box
+          bg="purple.800"
+          pos="absolute"
+          top={0}
+          left={0}
+          w="100%"
+          h={{ base: 223, md: 130, lg: 200 }}
+        ></Box>
+
+        <Container pos="relative" zIndex={1} px={0}>
+          <Box color="white" pt={{ base: 4, lg: 10 }}>
+            <Heading
+              fontSize={{ base: "3xl", lg: "5xl" }}
+              mb={{ base: 1, xl: 3 }}
+            >
+              Must Read
+            </Heading>
+            <Text>
+              Everything you need to know about the re-reboot of your favourite
+              childhood flick.
+            </Text>
+          </Box>
+
+          <Grid
+            templateColumns={{ base: "1fr", md: "1.3fr 1.7fr" }}
+            columnGap={{ base: 2, md: 3, lg: 5 }}
+            rowGap={{ base: 5, xl: 10 }}
+            mb={10}
+            mt={{ base: 7, lg: 0 }}
+          >
+            <GridItem>
+              <LG_StackCard
+                badge="style"
+                imageBadge
+                revereHeader
+                moreText={false}
+                mt={{ lg: 8, xl: 5 }}
+              />
+            </GridItem>
+
+            <GridItem mb={{ base: 5, md: 0 }}>
+              <Grid
+                transform={{ lg: "translateY(85px)", xl: "translateY(90px)" }}
+                templateColumns="1fr 1fr"
+                gap={{ base: 3, lg: 5 }}
+              >
+                <MD_StackCard
+                  imageProps={{
+                    h: { base: "112px", md: "85px", lg: "120px", xl: "173px" },
+                  }}
+                  badge="business"
+                  title="Fake engagement is only half the problem"
+                />
+                <MD_StackCard
+                  imageProps={{
+                    h: { base: "112px", md: "85px", lg: "120px", xl: "173px" },
+                  }}
+                  badge="business"
+                  title="Fake engagement is only half the problem"
+                />
+                <MD_StackCard
+                  imageProps={{
+                    h: { base: "112px", md: "85px", lg: "120px", xl: "173px" },
+                  }}
+                  badge="business"
+                  title="Fake engagement is only half the problem"
+                />
+                <MD_StackCard
+                  imageProps={{
+                    h: { base: "112px", md: "85px", lg: "120px", xl: "173px" },
+                  }}
+                  badge="business"
+                  title="Fake engagement is only half the problem"
+                />
+              </Grid>
+            </GridItem>
+
+            <GridItem colSpan={{ md: 2 }}>
+              <Container
+                maxW={1200}
+                border="1px"
+                borderColor="gray.100"
+                p={3}
+                mb={{ base: 5 }}
+              >
+                <Container maxW={768} p={0}>
+                  <AdCard imageProps={{ w: "100%", h: "120px" }} />
+                </Container>
+              </Container>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Container>
+
+      <Container as="section">
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1.9fr 1.1fr" }}
           columnGap={{ md: 2, lg: 5 }}
@@ -363,7 +464,7 @@ const HomePage = () => {
               title="Arts"
               p={{ md: 5 }}
               border="1px"
-              borderColor={{ base: "transparent", md: "gray.300" }}
+              borderColor={{ base: "transparent", md: "gray.100" }}
               moreButton
             >
               <MD_StackCard
@@ -411,7 +512,7 @@ const HomePage = () => {
               p={{ md: 5 }}
               mb={{ base: 10, md: 5 }}
               border="1px"
-              borderColor={{ base: "transparent", md: "gray.300" }}
+              borderColor={{ base: "transparent", md: "gray.100" }}
               moreButton
             >
               <SM_ListCard
@@ -430,7 +531,7 @@ const HomePage = () => {
               title="Culture"
               p={5}
               border="1px"
-              borderColor="gray.300"
+              borderColor="gray.100"
               moreButton
             >
               <SM_ListCard
@@ -453,7 +554,13 @@ const HomePage = () => {
   );
 };
 
-const LG_StackCard = ({ badge, imageBadge, revereHeader }) => {
+const LG_StackCard = ({
+  badge,
+  imageBadge,
+  revereHeader,
+  moreText = true,
+  ...rest
+}) => {
   const renderHeader = () => (
     <Box mb={3}>
       {!imageBadge && <Badge text="news" />}
@@ -467,7 +574,7 @@ const LG_StackCard = ({ badge, imageBadge, revereHeader }) => {
   );
 
   return (
-    <Box pb={5} mb={{ base: 5, md: 0 }}>
+    <Box pb={5} mb={{ base: 5, md: 0 }} {...rest}>
       {!revereHeader && renderHeader()}
 
       <CardImage
@@ -486,7 +593,9 @@ const LG_StackCard = ({ badge, imageBadge, revereHeader }) => {
 
       {revereHeader && renderHeader()}
 
-      <MoreText text="The main thing that you have to remember on this journey is just be nice to everyone and always smile. Refreshingly, what was expected of her was the..." />
+      {moreText && (
+        <MoreText text="The main thing that you have to remember on this journey is just be nice to everyone and always smile. Refreshingly, what was expected of her was the..." />
+      )}
     </Box>
   );
 };
@@ -520,7 +629,7 @@ const MD_ListCard = ({ badge, title }) => (
 
     <Box
       borderTop="1px"
-      borderColor="gray.300"
+      borderColor="gray.100"
       p={{ base: 1, md: 2 }}
       ml={{ base: 2, md: 3 }}
     >
@@ -552,7 +661,7 @@ const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
   </Flex>
 );
 
-const AdCard = ({ ...rest }) => (
+const AdCard = ({ imageProps, ...rest }) => (
   <Flex flexDir="column" alignItems="center" {...rest}>
     <Text
       textAlign="center"
@@ -564,8 +673,10 @@ const AdCard = ({ ...rest }) => (
     </Text>
 
     <CardImage
-      boxSize={{ base: 280, sm: 300, md: 166, lg: 200 }}
+      w={{ base: 280, sm: 300, md: 166, lg: 200, xl: 300 }}
+      h={{ base: 280, sm: 300, md: 166, lg: 200, xl: 300 }}
       src="/img/shoes.jpg"
+      {...imageProps}
     />
   </Flex>
 );

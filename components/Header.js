@@ -320,8 +320,8 @@ const Bottom = ({ brand, onClose, ...rest }) => {
   );
 
   return (
-    <Box py={{ md: 2, lg: 3 }} shadow={{ md: "lg" }} {...rest}>
-      <Container px={{ base: 0, md: 6 }}>
+    <Box py={2} shadow={{ md: "lg" }} {...rest}>
+      <Container px={{ base: 0, md: 6 }} wider>
         <Flex
           flexDir={{ md: "column", lg: "row" }}
           alignItems={{ base: "stretch", md: "flex-start", lg: "center" }}
