@@ -25,8 +25,12 @@ const HomePage = () => {
 
       <Container as="section">
         <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1fr 1fr 1fr" }}
-          columnGap={{ md: 2, lg: 5 }}
+          templateColumns={{
+            base: "1fr",
+            md: "1fr 1fr .9fr 1.1fr",
+            lg: "1fr 1fr 1fr 1fr",
+          }}
+          columnGap={{ md: 5 }}
           rowGap={10}
           mb={10}
         >
@@ -233,8 +237,12 @@ const HomePage = () => {
 
       <Container as="section">
         <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1.9fr 1fr" }}
-          columnGap={{ md: 2, lg: 5 }}
+          templateColumns={{
+            base: "1fr",
+            md: "1fr 1.9fr 1fr",
+            xl: ".8fr 2fr 1.1fr",
+          }}
+          columnGap={{ md: 5 }}
           rowGap={10}
           mb={10}
         >
@@ -283,7 +291,7 @@ const HomePage = () => {
           </GridItem>
 
           <GridItem>
-            <MiniSection title="Politics" p={{ md: 5 }}>
+            <MiniSection title="Politics" titleProps={{ mb: 6 }} p={{ md: 5 }}>
               <MD_ListCard
                 badge="arts"
                 title="The Smoke Signal by Frederic Remington, long distance communication"
@@ -379,7 +387,7 @@ const HomePage = () => {
           <Grid
             templateColumns={{
               base: "1fr",
-              lg: "1.35fr 1.65fr",
+              md: "1.35fr 1.65fr",
               xl: "1.25fr 1.75fr",
             }}
             columnGap={{ base: 2, md: 3, lg: 5 }}
@@ -614,7 +622,7 @@ const MD_StackCard = ({ badge, title, imageProps }) => (
   <Box mb={{ base: 5, md: 0 }}>
     <CardImage
       w="100%"
-      h={{ base: "144px", sm: "150px", md: "73px", lg: "100px" }}
+      h={{ base: "150px", md: "73.19px", lg: "100px" }}
       src="/img/news.jpg"
       badge={badge}
       {...imageProps}
@@ -630,8 +638,8 @@ const MD_ListCard = ({ badge, title }) => (
   <Flex mb={{ base: 5, md: 0 }}>
     <Box>
       <CardImage
-        w={{ base: "100px", md: "150px" }}
-        h={{ base: "70px", md: "100px" }}
+        w={{ base: "100px", md: "127px", lg: "168px", xl: "280px" }}
+        h={{ base: "70px", md: "76px", lg: "100px", xl: "170px" }}
         src="/img/news.jpg"
         badge={badge}
       />
@@ -640,12 +648,21 @@ const MD_ListCard = ({ badge, title }) => (
     <Box
       borderTop="1px"
       borderColor="gray.100"
-      p={{ base: 1, md: 2 }}
-      ml={{ base: 2, md: 3 }}
+      p={{ base: 1, lg: 2 }}
+      ml={{ base: 2, md: 1, lg: 3 }}
     >
-      <TitleText size="sm" text={title} />
+      <TitleText
+        size={{ base: "sm", xl: "lg" }}
+        mb={{ base: 1, xl: 2 }}
+        text={title}
+      />
 
-      <DateText />
+      <DateText mb={{ xl: 5 }} />
+
+      <MoreText
+        d={{ base: "none", xl: "block" }}
+        text="The main thing that you have to remember on this journey is just be nice to everyone and always smile. Refreshingly, what was expected of her was the..."
+      />
     </Box>
   </Flex>
 );
@@ -653,9 +670,13 @@ const MD_ListCard = ({ badge, title }) => (
 const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
   <Flex {...rest}>
     <Box mr={{ base: 2, md: 5 }}>
-      <TitleText size={{ base: "lg", md: "sm" }} text={title} mb={1} />
+      <TitleText
+        size={{ base: "lg", md: "xs", lg: "sm" }}
+        text={title}
+        mb={1}
+      />
 
-      <DateText />
+      <DateText d={{ md: "none", lg: "block" }} />
     </Box>
 
     {!noImage && (
@@ -663,7 +684,7 @@ const SM_ListCard = ({ title, imageIsRound = "full", noImage, ...rest }) => (
         wrapperProps={{
           flexShrink: 0,
         }}
-        boxSize={{ base: "64px", md: 35, lg: 50 }}
+        boxSize={{ base: "64px", md: 45, lg: 50, xl: 78 }}
         src="/img/news.jpg"
         rounded={imageIsRound}
       />
@@ -743,17 +764,21 @@ const DateText = ({
 );
 
 const MoreText = ({ text, size = "sm", ...rest }) => (
-  <Text fontSize={size} {...rest}>
+  <Text fontWeight={{ xl: "bold" }} fontSize={size} {...rest}>
     {text}
   </Text>
 );
 
-const MiniSection = ({ title, children, moreButton, ...rest }) => {
+const MiniSection = ({ title, titleProps, children, moreButton, ...rest }) => {
   return (
     <Box {...rest}>
-      <Stack spacing={4}>
+      <Stack spacing={{ base: 4, xl: 6 }}>
         {title && (
-          <Heading fontSize={{ base: "xl", md: "lg" }} color="purple.800">
+          <Heading
+            fontSize={{ base: "xl", md: "lg" }}
+            color="purple.800"
+            {...titleProps}
+          >
             {title}
           </Heading>
         )}
