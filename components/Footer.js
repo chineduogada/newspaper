@@ -21,6 +21,7 @@ import { FiChevronsUp } from "react-icons/fi";
 import Brand from "./Brand";
 import { Image } from "./Image";
 import { Link } from "./Link";
+import { Container } from "./Layout";
 
 const Footer = () => {
   return (
@@ -34,214 +35,216 @@ const Footer = () => {
       />
 
       <Box color="white" pos="relative" zIndex={1}>
-        <Grid
-          templateColumns={{
-            base: "1fr",
-            md: "1fr 1fr",
-            lg: "1.7fr .8fr .8fr 1.2fr",
-          }}
-          rowGap={10}
-          pt={16}
-          px={5}
-          pb={3}
-        >
-          <GridItem>
-            <Box w="200px">
-              <Brand size="3xl" />
+        <Container pb={10}>
+          <Grid
+            templateColumns={{
+              base: "1fr",
+              md: "1fr 1fr",
+              lg: "1.9fr .7fr .7fr 1.2fr",
+            }}
+            rowGap={10}
+            pt={16}
+            px={5}
+            pb={3}
+          >
+            <GridItem>
+              <Box w="200px">
+                <Brand size="3xl" />
 
-              <Text fontSize={{ base: "md", md: "sm", lg: "xs" }} my={4}>
-                © Munich, LLC. All rights reserved. Pulses Pro® is a registered
-                U.S. trademark of tagDiv, LLC.
-              </Text>
+                <Text fontSize={{ base: "md", md: "sm", lg: "xs" }} my={4}>
+                  © Munich, LLC. All rights reserved. Pulses Pro® is a
+                  registered U.S. trademark of tagDiv, LLC.
+                </Text>
 
-              <HStack spacing="2">
-                <Link>
-                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
-                    <TiSocialFacebook />
-                  </Icon>
+                <HStack spacing="2">
+                  <Link>
+                    <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
+                      <TiSocialFacebook />
+                    </Icon>
+                  </Link>
+                  <Link>
+                    <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
+                      <TiSocialTwitter />
+                    </Icon>
+                  </Link>
+                  <Link>
+                    <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
+                      <TiSocialInstagram />
+                    </Icon>
+                  </Link>
+                  <Link>
+                    <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
+                      <TiSocialYoutube />
+                    </Icon>
+                  </Link>
+                </HStack>
+              </Box>
+            </GridItem>
+
+            <GridItem>
+              <Heading
+                as="h6"
+                fontSize={{ base: "xl", md: "lg" }}
+                color="yellow.500"
+                mb={5}
+              >
+                About Us
+              </Heading>
+
+              <Stack spacing={1}>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
                 </Link>
-                <Link>
-                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
-                    <TiSocialTwitter />
-                  </Icon>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
                 </Link>
-                <Link>
-                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
-                    <TiSocialInstagram />
-                  </Icon>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
                 </Link>
-                <Link>
-                  <Icon fontSize={{ base: "1.65rem", md: "1.5rem" }}>
-                    <TiSocialYoutube />
-                  </Icon>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
                 </Link>
-              </HStack>
-            </Box>
-          </GridItem>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+              </Stack>
+            </GridItem>
 
-          <GridItem>
-            <Heading
-              as="h6"
-              fontSize={{ base: "xl", md: "lg" }}
-              color="yellow.500"
-              mb={5}
-            >
-              About Us
-            </Heading>
+            <GridItem>
+              <Heading
+                as="h6"
+                fontSize={{ base: "xl", md: "lg" }}
+                color="yellow.500"
+                mb={5}
+              >
+                Popular Category
+              </Heading>
 
-            <Stack spacing={1}>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-            </Stack>
-          </GridItem>
+              <Stack spacing={1}>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+                <Link
+                  mute
+                  fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
+                  textTransform="uppercase"
+                  letterSpacing={1}
+                  _hover={{ color: "yellow.500" }}
+                >
+                  Advertise
+                </Link>
+              </Stack>
+            </GridItem>
 
-          <GridItem>
-            <Heading
-              as="h6"
-              fontSize={{ base: "xl", md: "lg" }}
-              color="yellow.500"
-              mb={5}
-            >
-              Popular Category
-            </Heading>
+            <GridItem>
+              <Heading
+                as="h6"
+                fontSize={{ base: "xl", md: "lg" }}
+                color="yellow.500"
+                mb={5}
+              >
+                Editor Picks
+              </Heading>
 
-            <Stack spacing={1}>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-              <Link
-                mute
-                fontSize={{ base: "sm", md: "xs", lg: "xx-small" }}
-                textTransform="uppercase"
-                letterSpacing={1}
-                _hover={{ color: "yellow.500" }}
-              >
-                Advertise
-              </Link>
-            </Stack>
-          </GridItem>
+              <Stack spacing={5}>
+                <SM_ListCard
+                  title="Now Is the Time to Think About Your Small-Business Success"
+                  imageIsRound={false}
+                />
 
-          <GridItem>
-            <Heading
-              as="h6"
-              fontSize={{ base: "xl", md: "lg" }}
-              color="yellow.500"
-              mb={5}
-            >
-              Editor Picks
-            </Heading>
+                <SM_ListCard
+                  title="Program Will Lend $10M to New Detroit Minority Businesses"
+                  imageIsRound={false}
+                />
+              </Stack>
+            </GridItem>
+          </Grid>
+        </Container>
 
-            <Stack spacing={5}>
-              <SM_ListCard
-                title="Now Is the Time to Think About Your Small-Business Success"
-                imageIsRound={false}
-              />
-
-              <SM_ListCard
-                title="Program Will Lend $10M to New Detroit Minority Businesses"
-                imageIsRound={false}
-              />
-            </Stack>
-          </GridItem>
-        </Grid>
-
-        <Flex justifyContent="flex-end" px={5} pb={5}>
+        <Flex justifyContent="flex-end" pos="fixed" bottom={1} right={1}>
           <Link href="?top=true">
-            <Button rounded="sm" size="sm" colorScheme="purple">
+            <Button rounded="sm" size="sm" fontSize="xl" colorScheme="purple">
               <FiChevronsUp />
             </Button>
           </Link>

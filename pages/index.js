@@ -377,7 +377,11 @@ const HomePage = () => {
           </Box>
 
           <Grid
-            templateColumns={{ base: "1fr", md: "1.3fr 1.7fr" }}
+            templateColumns={{
+              base: "1fr",
+              lg: "1.35fr 1.65fr",
+              xl: "1.25fr 1.75fr",
+            }}
             columnGap={{ base: 2, md: 3, lg: 5 }}
             rowGap={{ base: 5, xl: 10 }}
             mb={10}
@@ -449,7 +453,12 @@ const HomePage = () => {
 
       <Container as="section">
         <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1.9fr 1.1fr" }}
+          templateColumns={{
+            base: "1fr",
+            md: "1fr 1.9fr 1.1fr",
+            lg: ".9fr 2fr 1.1fr",
+            xl: ".8fr 1.9fr 1.3fr",
+          }}
           columnGap={{ md: 2, lg: 5 }}
           rowGap={10}
           mb={10}
@@ -468,17 +477,17 @@ const HomePage = () => {
               moreButton
             >
               <MD_StackCard
-                imageProps={{ h: { base: "144px", md: "60px" } }}
+                imageProps={{ h: { base: "144px", md: "60px", lg: "110px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
               <MD_StackCard
-                imageProps={{ h: { base: "144px", md: "60px" } }}
+                imageProps={{ h: { base: "144px", md: "60px", lg: "110px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
               <MD_StackCard
-                imageProps={{ h: { base: "144px", md: "60px" } }}
+                imageProps={{ h: { base: "144px", md: "60px", lg: "110px" } }}
                 badge="arts"
                 title="Fake engagement is only half the problem"
               />
@@ -567,6 +576,7 @@ const LG_StackCard = ({
 
       <TitleText
         text={`Customer Engagement Marketing: A New Strategy for the Economy`}
+        size={{ base: "2xl", xl: "4xl" }}
       />
 
       <DateText text="Emilio Montes" />
@@ -692,6 +702,8 @@ const CardImage = ({ wrapperProps, badge, w, h, src, ...rest }) => (
 
 const Badge = ({ text, ...rest }) => (
   <Text
+    whiteSpace="nowrap"
+    wordBreak="keep-all"
     p={1}
     lineHeight={1}
     fontSize="xx-small"
